@@ -1,7 +1,7 @@
 {
-	"Flutter Widget Navigator: no active editor. Open a Dart file and try again.": "Flutter Widget Navigator : aucun éditeur actif. Ouvre un fichier Dart puis réessaie.",
-	"Flutter Widget Navigator: the active file is not Dart (detected language: \"{0}\").": "Flutter Widget Navigator : le fichier actif n'est pas du Dart (langage détecté : « {0} »).",
-	"Flutter Widget Navigator: no widget found in this file. The extension looks for constructor calls starting with a capital letter, such as Scaffold(...) or Text(...).": "Flutter Widget Navigator : aucun widget trouvé dans ce fichier. L'extension cherche les appels de constructeur commençant par une majuscule, comme Scaffold(...) ou Text(...).",
+	"Widget Tree Navigator: no active editor. Open a Dart file and try again.": "Widget Tree Navigator : aucun éditeur actif. Ouvre un fichier Dart puis réessaie.",
+	"Widget Tree Navigator: the active file is not Dart (detected language: \"{0}\").": "Widget Tree Navigator : le fichier actif n'est pas du Dart (langage détecté : « {0} »).",
+	"Widget Tree Navigator: no widget found in this file. The extension looks for constructor calls starting with a capital letter, such as Scaffold(...) or Text(...).": "Widget Tree Navigator : aucun widget trouvé dans ce fichier. L'extension cherche les appels de constructeur commençant par une majuscule, comme Scaffold(...) ou Text(...).",
 
 	"Filter widgets.": "Filtrer les widgets.",
 	"Filter widgets. Alt+F1 for help.": "Filtrer les widgets. Alt+F1 pour l'aide.",

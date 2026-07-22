@@ -1,7 +1,7 @@
-# Flutter Widget Navigator
+# Widget Tree Navigator
 
-Browse the **widget tree of a Dart file** in a keyboard-navigable list, designed to be read
-by a screen reader.
+Browse the **widget tree inside a Flutter/Dart `build()` method** in a keyboard-navigable
+list, designed to be read by a screen reader.
 
 `Ctrl+Shift+O` and the breadcrumb bar only show *declarations* — classes, methods, fields.
 Everything inside a `build()` method is made of *expressions*, so the widget hierarchy is
@@ -14,7 +14,7 @@ The interface follows VS Code's display language, in **English and French**.
 Until the extension is on the Marketplace, install the packaged file:
 
 ```bash
-code --install-extension flutter-widget-navigator-0.1.0.vsix
+code --install-extension widget-tree-navigator-0.1.0.vsix
 ```
 
 ## Usage

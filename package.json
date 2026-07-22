@@ -1,6 +1,6 @@
 {
-	"name": "flutter-widget-navigator",
-	"displayName": "Flutter Widget Navigator",
+	"name": "widget-tree-navigator",
+	"displayName": "Widget Tree Navigator",
 	"description": "%extension.description%",
 	"version": "0.1.0",
 	"publisher": "PierreOlivierBrillant",
@@ -33,22 +33,22 @@
 			{
 				"command": "flutterWidgetNav.showOutline",
 				"title": "%command.showOutline%",
-				"category": "Flutter Widget Navigator"
+				"category": "Widget Tree Navigator"
 			},
 			{
 				"command": "flutterWidgetNav.expand",
 				"title": "%command.expand%",
-				"category": "Flutter Widget Navigator"
+				"category": "Widget Tree Navigator"
 			},
 			{
 				"command": "flutterWidgetNav.collapse",
 				"title": "%command.collapse%",
-				"category": "Flutter Widget Navigator"
+				"category": "Widget Tree Navigator"
 			},
 			{
 				"command": "flutterWidgetNav.help",
 				"title": "%command.help%",
-				"category": "Flutter Widget Navigator"
+				"category": "Widget Tree Navigator"
 			}
 		],
 		"keybindings": [
@@ -74,7 +74,7 @@
 			}
 		],
 		"configuration": {
-			"title": "Flutter Widget Navigator",
+			"title": "Widget Tree Navigator",
 			"properties": {
 				"flutterWidgetNav.separator": {
 					"type": "string",

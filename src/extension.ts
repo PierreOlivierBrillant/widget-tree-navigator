@@ -100,7 +100,7 @@ async function showOutline(): Promise<void> {
 	const editor = vscode.window.activeTextEditor;
 	if (!editor) {
 		void vscode.window.showWarningMessage(
-			vscode.l10n.t("Flutter Widget Navigator: no active editor. Open a Dart file and try again."),
+			vscode.l10n.t("Widget Tree Navigator: no active editor. Open a Dart file and try again."),
 		);
 		return;
 	}
@@ -114,7 +114,7 @@ async function showOutline(): Promise<void> {
 	if (!isDart) {
 		void vscode.window.showWarningMessage(
 			vscode.l10n.t(
-				"Flutter Widget Navigator: the active file is not Dart (detected language: \"{0}\").",
+				"Widget Tree Navigator: the active file is not Dart (detected language: \"{0}\").",
 				editor.document.languageId,
 			),
 		);
@@ -133,7 +133,7 @@ async function showOutline(): Promise<void> {
 	if (total === 0) {
 		void vscode.window.showWarningMessage(
 			vscode.l10n.t(
-				"Flutter Widget Navigator: no widget found in this file. The extension looks for constructor calls starting with a capital letter, such as Scaffold(...) or Text(...).",
+				"Widget Tree Navigator: no widget found in this file. The extension looks for constructor calls starting with a capital letter, such as Scaffold(...) or Text(...).",
 			),
 		);
 		return;
