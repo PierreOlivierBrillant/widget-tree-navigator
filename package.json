@@ -25,6 +25,7 @@
 	"categories": [
 		"Other"
 	],
+	"icon": "icon.png",
 	"main": "./out/extension.js",
 	"l10n": "./l10n",
 	"contributes": {
