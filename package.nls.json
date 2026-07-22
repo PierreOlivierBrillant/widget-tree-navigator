@@ -1,0 +1,9 @@
+{
+	"extension.description": "Keyboard navigation through the widget tree of a Dart file, designed for screen readers.",
+	"command.showOutline": "Flutter: browse the widget tree",
+	"command.expand": "Expand the current item",
+	"command.collapse": "Collapse the current item",
+	"command.help": "Show the help inside the list",
+	"config.separator": "Text inserted between the level and the widget name (`L3 · Padding`).\n\nChange it if your screen reader reads the middle dot in a distracting way: try ` - ` or `, `.",
+	"config.excludedClasses": "Class names that must NOT be treated as widgets, IN ADDITION to the built-in list (see `widgetParser.ts`). Example: `MyHelper`."
+}

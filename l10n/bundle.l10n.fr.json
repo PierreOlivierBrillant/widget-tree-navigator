@@ -1,0 +1,30 @@
+{
+	"Flutter Widget Navigator: no active editor. Open a Dart file and try again.": "Flutter Widget Navigator : aucun éditeur actif. Ouvre un fichier Dart puis réessaie.",
+	"Flutter Widget Navigator: the active file is not Dart (detected language: \"{0}\").": "Flutter Widget Navigator : le fichier actif n'est pas du Dart (langage détecté : « {0} »).",
+	"Flutter Widget Navigator: no widget found in this file. The extension looks for constructor calls starting with a capital letter, such as Scaffold(...) or Text(...).": "Flutter Widget Navigator : aucun widget trouvé dans ce fichier. L'extension cherche les appels de constructeur commençant par une majuscule, comme Scaffold(...) ou Text(...).",
+
+	"{0}, {1} widgets": "{0}, {1} widgets",
+	"Filter widgets.": "Filtrer les widgets.",
+	"Filter widgets. Alt+F1 for help.": "Filtrer les widgets. Alt+F1 pour l'aide.",
+	"Help": "Aide",
+
+	"L{0}": "N{0}",
+	"line {0}": "ligne {0}",
+	"{0} child": "{0} enfant",
+	"{0} children": "{0} enfants",
+	"collapsed": "replié",
+
+	"Expand (Alt+Right)": "Déplier (Alt+Droite)",
+	"Collapse (Alt+Left)": "Replier (Alt+Gauche)",
+
+	"Alt+F1 or Enter: go back to the widget list.": "Alt+F1 ou Entrée : revenir à la liste des widgets.",
+	"Down Arrow or Up Arrow: move from one widget to the next. The editor follows, the cursor does not move.": "Flèche Bas ou Flèche Haut : passer d'un widget à l'autre. L'éditeur suit, le curseur ne bouge pas.",
+	"Type text: filter the list, by widget name or by line number.": "Taper du texte : filtrer la liste, par nom de widget ou par numéro de ligne.",
+	"Alt+Right: expand the current widget. Nothing happens on a widget without children, as in any tree.": "Alt+Droite : déplier le widget courant. Rien ne se passe sur un widget sans enfant, comme dans n'importe quel arbre.",
+	"Alt+Left: collapse the current widget, or move up to its parent.": "Alt+Gauche : replier le widget courant, ou remonter au widget parent.",
+	"Enter on a widget: put the cursor on it and return to the code.": "Entrée sur un widget : placer le curseur dessus et revenir au code.",
+	"Escape: close the list without moving anything.": "Échap : fermer la liste sans rien déplacer.",
+	"In an item, L2 means depth: level 2 in the widget tree.": "Dans un élément, N2 indique la profondeur : niveau 2 dans l'arbre des widgets.",
+	"An item with children says how many. It says \"collapsed\" only when it is collapsed; an expanded widget says nothing, to keep the reading short.": "Un élément qui a des enfants annonce leur nombre. Il dit « replié » uniquement quand il est replié ; un widget déplié ne dit rien, pour alléger la lecture.",
+	"An item such as _buildButtons() is a method call: its children are the widgets that method builds.": "Un élément comme _buildButtons() est un appel de méthode : ses enfants sont les widgets que cette méthode fabrique."
+}

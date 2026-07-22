@@ -1,0 +1,20 @@
+{
+	// Pressing F5 in this window launches a second VS Code window
+	// ("Extension Development Host") with the extension already loaded.
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Run the extension",
+			"type": "extensionHost",
+			"request": "launch",
+			"args": [
+				"--extensionDevelopmentPath=${workspaceFolder}"
+			],
+			"outFiles": [
+				"${workspaceFolder}/out/**/*.js"
+			],
+			// Compile the TypeScript before launching (see tasks.json).
+			"preLaunchTask": "npm: compile"
+		}
+	]
+}

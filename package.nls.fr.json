@@ -1,0 +1,9 @@
+{
+	"extension.description": "Navigation clavier dans l'arbre de widgets d'un fichier Dart, pensée pour les lecteurs d'écran.",
+	"command.showOutline": "Flutter : parcourir l'arbre de widgets",
+	"command.expand": "Déplier l'élément courant",
+	"command.collapse": "Replier l'élément courant",
+	"command.help": "Afficher l'aide dans la liste",
+	"config.separator": "Texte inséré entre le niveau et le nom du widget (`N3 · Padding`).\n\nÀ changer si le lecteur d'écran lit le point médian de façon dérangeante : essayer ` - ` ou `, `.",
+	"config.excludedClasses": "Noms de classes à ne PAS considérer comme des widgets, EN PLUS de la liste intégrée (voir `widgetParser.ts`). Exemple : `MonHelper`."
+}

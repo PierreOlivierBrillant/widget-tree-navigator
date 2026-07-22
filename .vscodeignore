@@ -1,0 +1,14 @@
+# Everything the packaged extension does not need at runtime.
+# Keep: out/, l10n/, package.nls*.json, README.md, LICENSE, CHANGELOG.md.
+
+.vscode/**
+node_modules/**
+src/**
+tools/**
+examples/**
+out/**/*.map
+**/*.ts
+tsconfig.json
+package-lock.json
+CLAUDE.md
+.gitignore

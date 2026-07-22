@@ -1,0 +1,107 @@
+{
+	"name": "flutter-widget-navigator",
+	"displayName": "Flutter Widget Navigator",
+	"description": "%extension.description%",
+	"version": "0.1.0",
+	"publisher": "pierreolivierbrillant",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/PierreOlivierBrillant/flutter-widget-navigator.git"
+	},
+	"bugs": {
+		"url": "https://github.com/PierreOlivierBrillant/flutter-widget-navigator/issues"
+	},
+	"keywords": [
+		"flutter",
+		"dart",
+		"accessibility",
+		"screen reader",
+		"outline"
+	],
+	"engines": {
+		"vscode": "^1.85.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"main": "./out/extension.js",
+	"l10n": "./l10n",
+	"contributes": {
+		"commands": [
+			{
+				"command": "flutterWidgetNav.showOutline",
+				"title": "%command.showOutline%",
+				"category": "Flutter Widget Navigator"
+			},
+			{
+				"command": "flutterWidgetNav.expand",
+				"title": "%command.expand%",
+				"category": "Flutter Widget Navigator"
+			},
+			{
+				"command": "flutterWidgetNav.collapse",
+				"title": "%command.collapse%",
+				"category": "Flutter Widget Navigator"
+			},
+			{
+				"command": "flutterWidgetNav.help",
+				"title": "%command.help%",
+				"category": "Flutter Widget Navigator"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "flutterWidgetNav.showOutline",
+				"key": "ctrl+alt+w",
+				"when": "editorTextFocus && (editorLangId == dart || resourceExtname == .dart)"
+			},
+			{
+				"command": "flutterWidgetNav.expand",
+				"key": "alt+right",
+				"when": "flutterWidgetNav.listOpen"
+			},
+			{
+				"command": "flutterWidgetNav.collapse",
+				"key": "alt+left",
+				"when": "flutterWidgetNav.listOpen"
+			},
+			{
+				"command": "flutterWidgetNav.help",
+				"key": "alt+f1",
+				"when": "flutterWidgetNav.listOpen"
+			}
+		],
+		"configuration": {
+			"title": "Flutter Widget Navigator",
+			"properties": {
+				"flutterWidgetNav.separator": {
+					"type": "string",
+					"default": " · ",
+					"markdownDescription": "%config.separator%"
+				},
+				"flutterWidgetNav.excludedClasses": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": [],
+					"markdownDescription": "%config.excludedClasses%"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"verify": "node tools/verify.js",
+		"check-l10n": "node tools/checkTranslations.js",
+		"test": "node tools/verify.js --check && node tools/checkTranslations.js"
+	},
+	"devDependencies": {
+		"@types/node": "^20.11.0",
+		"@types/vscode": "^1.85.0",
+		"typescript": "^5.4.0"
+	}
+}
