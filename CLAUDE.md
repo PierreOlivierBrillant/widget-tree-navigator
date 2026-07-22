@@ -89,13 +89,20 @@ the parser by reaching for a Dart-Code API that does not exist.
 ## Verifying a change
 
 ```bash
-npm run compile && npm run verify
+npm run compile && npm test
 ```
 
-`npm run verify` prints the parsed tree for `examples/counter.dart`. Any change to
-the parser must be checked against that file *and* against a file of your own with
-awkward cases (triple-quoted strings, raw strings, `switch` expressions,
-collection-`if`, nested lambdas) before being called done.
+`npm test` parses both fixtures — `examples/counter.dart` (the `flutter create`
+skeleton) and `examples/traps.dart` (the hostile cases) — compares the result to
+the recorded `.expected.txt` files, and then checks that every user-facing string
+exists in both languages. It fails on any difference.
+
+A parser change that alters the tree is therefore a **reviewable diff**, not a
+silent regression. Read that diff, decide it is what you wanted, then record it
+with `npm test -- --update`. Never update the reference to make a red test go
+green without reading it first: a wrong node is worse than a missing one.
+
+`npm run verify` prints the trees instead, which is what you want while iterating.
 
 Then `F5` opens an Extension Development Host to test the UI by hand. Two things
 can only be verified there, never from the compiler:

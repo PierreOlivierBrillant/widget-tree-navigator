@@ -11,11 +11,27 @@ The interface is available in **English and French**; it follows VS Code's displ
 
 ---
 
+## Installation
+
+Until the extension is on the Marketplace, install the packaged file:
+
+```bash
+code --install-extension flutter-widget-navigator-0.1.0.vsix
+```
+
+To build that file yourself:
+
+```bash
+npm install && npx @vscode/vsce package --no-dependencies
+```
+
+---
+
 ## Usage
 
 | Key | Effect |
 |---|---|
-| `Ctrl+Alt+W` | Opens the widget list for the active Dart file |
+| `Ctrl+Alt+W` | Opens the widget list for the active Dart file, on the widget nearest the cursor |
 | Up / Down Arrow | Move through the list; the editor scrolls to the line, the cursor does not move |
 | Type text | Filters the list (widget name, or `line 42`) |
 | `Alt+Right` | Expands the current item |
@@ -33,7 +49,9 @@ L3 · Padding                              line 53
 
 The level (`L2`), the number of children and the fold state are **spelled out** in the item
 text, never implied by indentation or an icon: a screen reader announces the text, not the
-layout. The fold state resets (everything expanded) on every open.
+layout. Nothing is said for an expanded widget: everything starts expanded, so the word
+would be spoken on nearly every item without carrying any information. The fold state resets
+on every open.
 
 `Ctrl+Shift+O` and `Ctrl+Shift+.` are left untouched.
 
@@ -135,11 +153,11 @@ keep mirroring the interface. The parser finds the members of the file that buil
 `Widget get header => …` — and **copies their contents under their call site**:
 
 ```
-L4 · Column, 4 children, expanded
+L4 · Column, 4 children
 L5 · SizedBox
-L5 · _buildButtons(), 1 child, expanded     ← the call, line 67
-L6 · Row, 2 children, expanded              ← the method body, line 81
-L7 · ElevatedButton.icon, 2 children, expanded
+L5 · _buildButtons(), 1 child     ← the call, line 67
+L6 · Row, 2 children              ← the method body, line 81
+L7 · ElevatedButton.icon, 2 children
 ```
 
 Enter on `_buildButtons()` goes to the call; Enter on `Row` goes into the method. A method
@@ -179,11 +197,17 @@ Four lists, all editable at the top of `widgetParser.ts`:
   analysis of that file off.
 - The **whole** file is analysed, not just `build()` methods.
 
-To check the effect of a change without starting VS Code:
+Two fixtures guard all of this. `examples/counter.dart` is the `flutter create` skeleton,
+`examples/traps.dart` collects the hostile cases (triple-quoted and raw strings, comments
+containing widget calls, collection-`if`, `switch` expressions, `.map()`, nested lambdas).
+Their parsed trees are recorded next to them as `.expected.txt`, and:
 
 ```bash
-npm run compile && npm run verify
+npm run compile && npm test
 ```
+
+fails on any difference. Print the trees instead with `npm run verify`, and record a new
+reference — after reading the diff — with `npm test -- --update`.
 
 ---
 

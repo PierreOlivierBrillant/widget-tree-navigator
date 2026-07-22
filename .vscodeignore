@@ -2,6 +2,7 @@
 # Keep: out/, l10n/, package.nls*.json, README.md, LICENSE, CHANGELOG.md.
 
 .vscode/**
+.claude/**
 node_modules/**
 src/**
 tools/**
