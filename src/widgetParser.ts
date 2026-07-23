@@ -82,23 +82,28 @@ const NON_WIDGET_CLASSES = new Set<string>([
 	"AlwaysStoppedAnimation", "AnimationController", "CurvedAnimation",
 	"GlobalKey", "Key", "ObjectKey", "PageController", "ScrollController",
 	"TextEditingController", "Tween", "UniqueKey", "ValueKey", "ValueNotifier",
+	// Image providers: `image: AssetImage(...)` is not a widget, `Image(...)` is.
+	"AssetImage", "FileImage", "MemoryImage", "NetworkImage", "ResizeImage",
 	// Common standard-library types
-	"DateTime", "Duration", "Exception", "Future", "List", "Map",
-	"MaterialPageRoute", "Random", "RegExp", "Set", "StateError", "Stream",
-	"String", "Timer", "Uri",
+	"DateTime", "Duration", "Exception", "Future", "Iterable", "List", "Map",
+	"MaterialPageRoute", "Object", "Random", "RegExp", "Set", "StateError",
+	"Stream", "String", "Symbol", "Timer", "Uri",
 ]);
 
 /**
- * Name endings that give away a class which is not a widget.
+ * Name endings that give away a class which is not a widget. Cheaper than
+ * listing every member of a family one by one.
  *
- * This mainly covers one very frequent case: `createState() => _MyPageState();`
- * would otherwise show `_MyPageState` as a top-level widget in every stateful
- * widget. No common Flutter widget ends in "State".
+ * - "State" covers the very frequent `createState() => _MyPageState();`, which
+ *   would otherwise show a spurious widget in every stateful widget.
+ * - "ScrollPhysics" covers `NeverScrollableScrollPhysics()`,
+ *   `BouncingScrollPhysics()`, `ClampingScrollPhysics()` and friends, passed to
+ *   `physics:` on every scrollable.
  *
- * If this ever hides something you wanted to see, just empty the list:
- * `const NON_WIDGET_SUFFIXES: string[] = [];`
+ * No common Flutter widget ends in either. If one of these ever hides something
+ * you wanted to see, just remove it from the list.
  */
-const NON_WIDGET_SUFFIXES: string[] = ["State"];
+const NON_WIDGET_SUFFIXES: string[] = ["State", "ScrollPhysics"];
 
 /**
  * Named constructors (`Class.member(...)`) accepted as widgets.
@@ -242,18 +247,42 @@ interface WidgetMember {
 }
 
 /**
- * Recognizes:
+ * Matches any `ReturnType name(` / `ReturnType get name =>` declaration:
+ *
  *   Widget _buildButtons() { … }
- *   Widget _card(String title) => …
+ *   GridView _buttons() { … }          ← a concrete widget type, very common
+ *   Text _title() => …
  *   List<Widget> _cards() { … }
- *   PreferredSizeWidget _bar() { … }
  *   Widget get header => …
  *
+ * The return type is captured rather than hard-coded, because helper methods are
+ * routinely declared with the concrete type they build, not with `Widget`.
+ * `returnTypeBuildsWidgets()` below decides which ones to keep.
+ *
  * The trailing `(?=…)` is a lookahead: it matches without consuming, so the end
- * of the captured text is exactly the end of the member name.
+ * of the captured text is exactly the end of the member name. That lookahead is
+ * also what keeps fields out: `Widget header = Text('x');` is followed by `=`,
+ * not by `(`, `=>` or `{`.
  */
-const WIDGET_MEMBER_REGEX =
-	/(?:List\s*<\s*Widget\s*>|PreferredSizeWidget|Widget)\??\s+(get\s+)?([A-Za-z_$][\w$]*)(?=\s*(?:\(|=>|\{))/g;
+const MEMBER_DECLARATION_REGEX =
+	/([A-Za-z_$][\w$]*)(\s*<[^<>]*>)?\??\s+(get\s+)?([A-Za-z_$][\w$]*)(?=\s*(?:\(|=>|\{))/g;
+
+/**
+ * Decides whether a declared return type means "this member builds widgets".
+ *
+ * We cannot know the real Flutter class hierarchy from the text alone, so we
+ * reuse the same heuristic as the rest of the parser: a capitalised name that is
+ * not on the deny lists is assumed to be a widget. `void`, `int`, `bool` and
+ * `double` are lowercase and rejected on the spot; `String`, `Future`, `Color`,
+ * `TextStyle`… are caught by NON_WIDGET_CLASSES.
+ */
+function returnTypeBuildsWidgets(base: string, generics: string | undefined): boolean {
+	// `List<Widget>`, `Iterable<Widget>`… the container is irrelevant here.
+	if (generics && /\bWidget\b/.test(generics)) { return true; }
+	return startsWithCapital(base)
+		&& !NON_WIDGET_CLASSES.has(base)
+		&& !hasExcludedSuffix(base);
+}
 
 function findWidgetMembers(masked: string): Map<string, WidgetMember> {
 	const members = new Map<string, WidgetMember>();
@@ -265,12 +294,14 @@ function findWidgetMembers(masked: string): Map<string, WidgetMember> {
 	 */
 	const ambiguous = new Set<string>();
 
-	WIDGET_MEMBER_REGEX.lastIndex = 0;
+	MEMBER_DECLARATION_REGEX.lastIndex = 0;
 	let m: RegExpExecArray | null;
-	while ((m = WIDGET_MEMBER_REGEX.exec(masked)) !== null) {
-		const isGetter = m[1] !== undefined;
-		const name = m[2];
+	while ((m = MEMBER_DECLARATION_REGEX.exec(masked)) !== null) {
+		const isGetter = m[3] !== undefined;
+		const name = m[4];
 		const nameOffset = m.index + m[0].length - name.length;
+
+		if (!returnTypeBuildsWidgets(m[1], m[2])) { continue; }
 
 		// `Widget Function(BuildContext) builder` is not a member.
 		if (name === "Function" || ambiguous.has(name)) { continue; }

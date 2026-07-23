@@ -1,0 +1,15 @@
+L1 · Scaffold, 1 child   [line 39]
+L2 · Center, 1 child   [line 40]
+L3 · Column, 3 children   [line 41]
+L4 · _title(), 1 child   [line 43]
+L5 · Text   [line 50]
+L4 · _score(), 1 child   [line 43]
+L5 · Row, 2 children   [line 54]
+L6 · Text   [line 56]
+L6 · Text   [line 56]
+L4 · _buttons(), 1 child   [line 43]
+L5 · GridView.count, 1 child   [line 61]
+L6 · ElevatedButton, 1 child   [line 70]
+L7 · Text   [line 81]
+
+13 widget(s) in total.

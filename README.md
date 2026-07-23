@@ -64,7 +64,8 @@ information. Folding resets on every open.
 `Ctrl+Shift+O` and `Ctrl+Shift+.` keep working as usual.
 
 Helper methods are followed: the widgets built by `Widget _buildButtons() {…}` appear under
-its call site rather than in a separate tree.
+its call site rather than in a separate tree. The return type may be `Widget`, `List<Widget>`,
+or the concrete type being built — `GridView _buttons() {…}` works just as well.
 
 ## Accessibility
 

@@ -24,7 +24,7 @@ const path = require("path");
 const { parseWidgets } = require("../out/widgetParser.js");
 
 const EXAMPLES = path.join(__dirname, "..", "examples");
-const FIXTURES = ["counter.dart", "traps.dart"];
+const FIXTURES = ["counter.dart", "traps.dart", "helpers.dart"];
 
 /** Renders the tree of one file exactly as the recorded reference stores it. */
 function render(file) {
