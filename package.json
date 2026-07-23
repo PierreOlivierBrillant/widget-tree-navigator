@@ -7,10 +7,10 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/PierreOlivierBrillant/flutter-widget-navigator.git"
+		"url": "https://github.com/PierreOlivierBrillant/widget-tree-navigator.git"
 	},
 	"bugs": {
-		"url": "https://github.com/PierreOlivierBrillant/flutter-widget-navigator/issues"
+		"url": "https://github.com/PierreOlivierBrillant/widget-tree-navigator/issues"
 	},
 	"keywords": [
 		"flutter",
