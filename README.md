@@ -4,7 +4,6 @@ Browse the **widget tree inside a Flutter/Dart `build()` method** in a keyboard-
 list — built for developers who use a screen reader.
 
 <p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=PierreOlivierBrillant.widget-tree-navigator"><img src="https://img.shields.io/visual-studio-marketplace/v/PierreOlivierBrillant.widget-tree-navigator?label=Marketplace&color=007ACC" alt="Visual Studio Marketplace version"></a>
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT">
   <img src="https://img.shields.io/badge/languages-EN%20%7C%20FR-blue.svg" alt="English and French">
   <img src="https://img.shields.io/badge/built%20for-screen%20readers-6f42c1.svg" alt="Built for screen readers">
